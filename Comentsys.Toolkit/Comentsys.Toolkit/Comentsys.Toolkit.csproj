@@ -13,11 +13,11 @@
 		<PackageReleaseNotes>
 			1.0.0 - Initial Release
 		</PackageReleaseNotes>
-		<PackageProjectUrl>http://github.com/Comentsys/Comentsys.Toolkit</PackageProjectUrl>
+		<PackageProjectUrl>https://github.com/Comentsys/Comentsys.Toolkit</PackageProjectUrl>
 		<Description>Toolkit for Binding and Asset Support</Description>
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<RepositoryUrl>http://github.com/Comentsys/Comentsys.Toolkit</RepositoryUrl>
+		<RepositoryUrl>https://github.com/Comentsys/Comentsys.Toolkit</RepositoryUrl>
 		<PackageIcon>comentsys.toolkit.png</PackageIcon>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>
