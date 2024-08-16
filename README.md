@@ -4,6 +4,10 @@
 
 ## Change Log
 
+### Version 1.1.0
+
+- Add ActionCommand and Update AssetBase with AsString Methods
+
 ### Version 1.0.0
 
 - Initial Release
@@ -58,6 +62,36 @@ As Stream
 
 Resource Stream
 
+### AsString(root, path, source, target, extension)
+
+As String
+
+| Name | Description |
+| ---- | ----------- |
+| root | *System.String*<br>Root |
+| path | *System.String*<br>Path |
+| source | *System.Nullable{System.Drawing.Color}*<br>Source |
+| target | *System.Nullable{System.Drawing.Color}*<br>Target |
+| extension | *System.String*<br>Extension |
+
+#### Returns
+
+Resource String
+
+### AsString(root, path, extension)
+
+As String
+
+| Name | Description |
+| ---- | ----------- |
+| root | *System.String*<br>Root |
+| path | *System.String*<br>Path |
+| extension | *System.String*<br>Extension |
+
+#### Returns
+
+Resource Stream
+
 ## AssetResource
 
 `AssetResource` is used by an **Asset** Library an an **Abstraction** to represent the contents of an **Asset** which is usually in **SVG** format and exposes a **Height** and **Width** for correct representation by clients if needed. 
@@ -91,6 +125,18 @@ Asset Resource Stream
 ### Width
 
 Asset Resource Width
+
+## ActionCommand
+
+`ActionCommand` can be used with **Data Binding** and implements **Class** for `ActionCommandObservableBase` to support **Commanding** and supports **Nullable**.
+
+### Constructor(action)
+
+Action Command
+
+| Name | Description |
+| ---- | ----------- |
+| action | *System.Action{System.Object}*<br>Action |
 
 ## ActionCommandHandler
 
@@ -164,7 +210,7 @@ Enabled
 
 ## ObservableBase
 
-`ObservableBase` provides the basis of an **Observable** by implmenting the **Interface** for `INotifyPropertyChanged`
+`ObservableBase` provides the basis of an **Observable** by implementing the **Interface** for `INotifyPropertyChanged`
 
 ### OnPropertyChanged(propertyName)
 
@@ -181,13 +227,25 @@ Property Changed Event Handler
 ## Licence
 
 ```
-The MIT License (MIT)
+MIT License
 
-Copyright (c) 2022 Comentsys
+Copyright (c) Comentsys
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 ```
