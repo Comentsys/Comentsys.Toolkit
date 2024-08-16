@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-
-namespace Comentsys.Toolkit;
+﻿namespace Comentsys.Toolkit;
 
 /// <summary>
 /// Asset Extensions
