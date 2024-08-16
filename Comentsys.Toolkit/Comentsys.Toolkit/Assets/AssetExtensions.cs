@@ -1,4 +1,6 @@
-﻿namespace Comentsys.Toolkit;
+﻿using System.Diagnostics;
+
+namespace Comentsys.Toolkit;
 
 /// <summary>
 /// Asset Extensions
@@ -108,7 +110,7 @@ internal static class AssetExtensions
     }
 
     /// <summary>
-    /// Get Resource String
+    /// Get Resource Stream
     /// </summary>
     /// <param name="resourcePath">Path</param>
     /// <param name="sources">Source Colours</param>
@@ -126,6 +128,66 @@ internal static class AssetExtensions
             var content = reader.ReadToEnd()
             .ProcessAssetResource(sources, targets);
             return content.ToStream();
+        }
+        return null;
+    }
+
+    /// <summary>
+    /// Get Resource String
+    /// </summary>
+    /// <param name="resourcePath">Path</param>
+    /// <returns>Resource String</returns>
+    internal static string? GetResourceString<TResource>(this string resourcePath)
+    {
+        var stream = GetResourceStream<TResource>(resourcePath);
+        if (stream?.Length > 0)
+        {
+            using StreamReader reader = new(stream);
+            return reader.ReadToEnd();
+        }
+        return null;
+    }
+
+    /// <summary>
+    /// Get Resource String
+    /// </summary>
+    /// <param name="resourcePath">Path</param>
+    /// <param name="source">Source Colour</param>
+    /// <param name="target">Target Colour</param>
+    /// <returns>Resource String</returns>
+    internal static string? GetResourceString<TResource>(this string resourcePath,
+        Color? source = null, Color? target = null)
+    {
+        var stream = GetResourceStream<TResource>(resourcePath);
+        if (stream?.Length > 0)
+        {
+            using StreamReader reader = new(stream);
+            var content = reader.ReadToEnd();
+            if (source == null && target == null)
+                return content;
+            return content.ProcessAssetResource(source, target);
+        }
+        return null;
+    }
+
+    /// <summary>
+    /// Get Resource String
+    /// </summary>
+    /// <param name="resourcePath">Path</param>
+    /// <param name="sources">Source Colours</param>
+    /// <param name="targets">Target Colours</param>
+    /// <returns>Resource String</returns>
+    internal static string? GetResourceString<TResource>(this string resourcePath,
+        Color[]? sources = null, Color[]? targets = null)
+    {
+        var stream = GetResourceStream<TResource>(resourcePath);
+        if (stream?.Length > 0)
+        {
+            using StreamReader reader = new(stream);
+            var content = reader.ReadToEnd();
+            if (sources == null && targets == null)
+                return content;
+            return content.ProcessAssetResource(sources, targets);
         }
         return null;
     }
