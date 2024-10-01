@@ -38,4 +38,19 @@ public class AssetResource
     /// Empty Asset Resource
     /// </summary>
     public static AssetResource Empty { get; set; } = new(Stream.Null, 0, 0);
+
+    /// <summary>
+    /// Asset Resource SVG String
+    /// </summary>
+    /// <returns>SVG String</returns>
+    public string? ToSvgString() => 
+        Stream?.GetString();
+
+    /// <summary>
+    /// Asset Resource Base-64 Encoded SVG String
+    /// </summary>
+    /// <returns>Base-64 Encoded SVG String</returns>
+    public string? ToBase64EncodedSvgString() => 
+        ToSvgString()?.
+        GetBase64EncodedString();
 }
