@@ -4,6 +4,10 @@
 
 ## Change Log
 
+### Version 1.2.0
+
+- Update AssetResource with ToSvgString and ToBase64EncodedSvgString Methods, AssetBase with GetBase64EncodedString, FromStream, FromString and AsString Methods
+
 ### Version 1.1.0
 
 - Add ActionCommand and Update AssetBase with AsString Methods
@@ -14,7 +18,7 @@
 
 ## AssetBase
 
-`AssetBase` can be used as the basis of an **Asset** Library that can be used in any **.NET Standard** Compatible **Application**.
+`AssetBase` can be used as the basis of an **Asset** Library using **SVG** format that can be used in any **.NET Standard** Compatible **Application**.
 
 ### AsStream(root, path, sources, targets, extension)
 
@@ -22,11 +26,11 @@ As Stream
 
 | Name | Description |
 | ---- | ----------- |
-| `root` | `System.String`<br>Root |
-| `path` | `System.String`<br>Path |
-| `sources` | `System.Drawing.Color[]?`<br>Sources |
-| `targets` | `System.Drawing.Color[]?`<br>Targets |
-| `extension` | `System.String`<br>Extension |
+| root | *System.String*<br>Root |
+| path | *System.String*<br>Path |
+| sources | *System.Drawing.Color[]*<br>Sources |
+| targets | *System.Drawing.Color[]*<br>Targets |
+| extension | *System.String*<br>Extension |
 
 #### Returns
 
@@ -38,11 +42,11 @@ As Stream
 
 | Name | Description |
 | ---- | ----------- |
-| `root` | `System.String`<br>Root |
-| `path` | `System.String`<br>Path |
-| `source` | `System.Drawing.Color?`<br>Source |
-| `target` | `System.Drawing.Color?`<br>Target |
-| `extension` | `System.String`<br>Extension |
+| root | *System.String*<br>Root |
+| path | *System.String*<br>Path |
+| source | *System.Nullable{System.Drawing.Color}*<br>Source |
+| target | *System.Nullable{System.Drawing.Color}*<br>Target |
+| extension | *System.String*<br>Extension |
 
 #### Returns
 
@@ -54,13 +58,57 @@ As Stream
 
 | Name | Description |
 | ---- | ----------- |
-| `root` | `System.String`<br>Root |
-| `path` | `System.String`<br>Path |
-| `extension` | `System.String`<br>Extension |
+| root | *System.String*<br>Root |
+| path | *System.String*<br>Path |
+| extension | *System.String*<br>Extension |
 
 #### Returns
 
 Resource Stream
+
+### AsString(content, sources, targets)
+
+As String
+
+| Name | Description |
+| ---- | ----------- |
+| content | *System.String*<br>Content |
+| sources | *System.Drawing.Color[]*<br>Sources |
+| targets | *System.Drawing.Color[]*<br>Targets |
+
+#### Returns
+
+Resource String
+
+### AsString(content, source, target)
+
+As String
+
+| Name | Description |
+| ---- | ----------- |
+| content | *System.String*<br>Content |
+| source | *System.Nullable{System.Drawing.Color}*<br>Source |
+| target | *System.Nullable{System.Drawing.Color}*<br>Target |
+
+#### Returns
+
+Resource String
+
+### AsString(root, path, sources, targets, extension)
+
+As String
+
+| Name | Description |
+| ---- | ----------- |
+| root | *System.String*<br>Root |
+| path | *System.String*<br>Path |
+| sources | *System.Drawing.Color[]*<br>Sources |
+| targets | *System.Drawing.Color[]*<br>Targets |
+| extension | *System.String*<br>Extension |
+
+#### Returns
+
+Resource String
 
 ### AsString(root, path, source, target, extension)
 
@@ -92,9 +140,89 @@ As String
 
 Resource Stream
 
+### FromStream(stream, sources, targets)
+
+From Stream
+
+| Name | Description |
+| ---- | ----------- |
+| stream | *System.IO.Stream*<br>Stream |
+| sources | *System.Drawing.Color[]*<br>Sources |
+| targets | *System.Drawing.Color[]*<br>Targets |
+
+#### Returns
+
+Resource Stream
+
+### FromStream(stream, source, target)
+
+From Stream
+
+| Name | Description |
+| ---- | ----------- |
+| stream | *System.IO.Stream*<br>Stream |
+| source | *System.Nullable{System.Drawing.Color}*<br>Source |
+| target | *System.Nullable{System.Drawing.Color}*<br>Target |
+
+#### Returns
+
+Resource Stream
+
+### FromString(content, sources, targets)
+
+From String
+
+| Name | Description |
+| ---- | ----------- |
+| content | *System.String*<br>Content |
+| sources | *System.Drawing.Color[]*<br>Sources |
+| targets | *System.Drawing.Color[]*<br>Targets |
+
+#### Returns
+
+Resource Stream
+
+### FromString(content, source, target)
+
+From String
+
+| Name | Description |
+| ---- | ----------- |
+| content | *System.String*<br>Content |
+| source | *System.Nullable{System.Drawing.Color}*<br>Source |
+| target | *System.Nullable{System.Drawing.Color}*<br>Target |
+
+#### Returns
+
+Resource Stream
+
+### FromString(content)
+
+From String
+
+| Name | Description |
+| ---- | ----------- |
+| content | *System.String*<br>Content |
+
+#### Returns
+
+Resource Stream
+
+### GetBase64EncodedString(value)
+
+Get Base-64 Encoded String
+
+| Name | Description |
+| ---- | ----------- |
+| value | *System.String*<br>Value |
+
+#### Returns
+
+Base-64 Encoded String
+
 ## AssetResource
 
-`AssetResource` is used by an **Asset** Library an an **Abstraction** to represent the contents of an **Asset** which is usually in **SVG** format and exposes a **Height** and **Width** for correct representation by clients if needed. 
+`AssetResource` is used by an **Asset** Library as an **Abstraction** to represent the contents of an **Asset** in **SVG** format and exposes a **Height** and **Width** for correct representation by clients if needed. 
 
 ### Constructor
 
@@ -125,6 +253,22 @@ Asset Resource Stream
 ### Width
 
 Asset Resource Width
+
+### ToBase64EncodedSvgString
+
+Asset Resource Base-64 Encoded SVG String
+
+#### Returns
+
+Base-64 Encoded SVG String
+
+### ToSvgString
+
+Asset Resource SVG String
+
+#### Returns
+
+SVG String
 
 ## ActionCommand
 

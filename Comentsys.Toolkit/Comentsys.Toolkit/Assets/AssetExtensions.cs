@@ -6,14 +6,6 @@
 internal static class AssetExtensions
 {
     /// <summary>
-    /// To Stream
-    /// </summary>
-    /// <param name="value">Value</param>
-    /// <returns>Stream</returns>
-    private static Stream ToStream(this string? value) =>
-        value != null ? new MemoryStream(Encoding.UTF8.GetBytes(value)) : new MemoryStream();
-
-    /// <summary>
     /// Color To String
     /// </summary>
     /// <param name="color">Color</param>
@@ -30,7 +22,7 @@ internal static class AssetExtensions
     /// <returns>Replaced Elements</returns>
     private static string AssetResourceReplace(this string content, string? source, string? target)
     {
-        if(source != null && target != null)
+        if (source != null && target != null)
         {
             content = content.Replace(source, target);
             content = content.Replace(source.ToUpper(), target);
@@ -40,13 +32,42 @@ internal static class AssetExtensions
     }
 
     /// <summary>
+    /// Get Stream
+    /// </summary>
+    /// <param name="value">Value</param>
+    /// <returns>Stream</returns>
+    internal static Stream GetStream(this string? value) =>
+        value != null ? new MemoryStream(Encoding.UTF8.GetBytes(value)) : new MemoryStream();
+
+    /// <summary>
+    /// Get String
+    /// </summary>
+    /// <param name="stream">Stream</param>
+    /// <returns>String</returns>
+    internal static string? GetString(this Stream? stream)
+    {
+        if (stream == null)
+            return null;
+        using var reader = new StreamReader(stream, Encoding.UTF8);
+        return reader.ReadToEnd();
+    }
+
+    /// <summary>
+    /// Get Base-64 Encoded String
+    /// </summary>
+    /// <param name="value">Value</param>
+    /// <returns>Base-64 Encoded String</returns>
+    internal static string? GetBase64EncodedString(this string? value) =>
+        value != null ? Convert.ToBase64String(Encoding.ASCII.GetBytes(value)) : value;
+
+    /// <summary>
     /// Process Asset Resource
     /// </summary>
     /// <param name="content">Content</param>
     /// <param name="source">Source Colour</param>
     /// <param name="target">Target Colour</param>
     /// <returns>Processed Resource Data</returns>
-    private static string? ProcessAssetResource(this string content, Color? source = null, Color? target = null) =>
+    internal static string? ProcessAssetResource(this string content, Color? source = null, Color? target = null) =>
         source != null && target != null ?
             content.AssetResourceReplace(ColorToString(source), ColorToString(target)) :
             content;
@@ -58,7 +79,7 @@ internal static class AssetExtensions
     /// <param name="sources">Source Colours</param>
     /// <param name="targets">Target Colours</param>
     /// <returns>Processed Resource Data</returns>
-    private static string? ProcessAssetResource(this string content, 
+    internal static string? ProcessAssetResource(this string content, 
         Color[]? sources = null, Color[]? targets = null)
     {
         if (sources != null && targets != null)
@@ -83,16 +104,15 @@ internal static class AssetExtensions
         typeof(TResource)?.Assembly?.GetManifestResourceStream(resourcePath);
 
     /// <summary>
-    /// Get Resource Stream
+    /// Process Resource Stream
     /// </summary>
-    /// <param name="resourcePath">Path</param>
+    /// <param name="stream">Stream</param>
     /// <param name="source">Source Colour</param>
     /// <param name="target">Target Colour</param>
     /// <returns>Resource Stream</returns>
-    internal static Stream? GetResourceStream<TResource>(this string resourcePath, 
+    internal static Stream? ProcessResourceStream(this Stream stream,
         Color? source = null, Color? target = null)
     {
-        var stream = GetResourceStream<TResource>(resourcePath);
         if (source == null && target == null)
             return stream;
         if (stream?.Length > 0)
@@ -102,7 +122,29 @@ internal static class AssetExtensions
             using StreamReader reader = new(stream);
             var content = reader.ReadToEnd()
             .ProcessAssetResource(source, target);
-            return content.ToStream();
+            return content.GetStream();
+        }
+        return null;
+    }
+
+    /// <summary>
+    /// Process Resource Stream
+    /// </summary>
+    /// <param name="stream">Stream</param>
+    /// <param name="sources">Source Colours</param>
+    /// <param name="targets">Target Colours</param>
+    /// <returns>Resource Stream</returns>
+    internal static Stream? ProcessResourceStream(this Stream stream,
+        Color[]? sources = null, Color[]? targets = null)
+    {
+        if (sources == null && targets == null)
+            return stream;
+        if (stream?.Length > 0)
+        {
+            using StreamReader reader = new(stream);
+            var content = reader.ReadToEnd()
+            .ProcessAssetResource(sources, targets);
+            return content.GetStream();
         }
         return null;
     }
@@ -111,24 +153,25 @@ internal static class AssetExtensions
     /// Get Resource Stream
     /// </summary>
     /// <param name="resourcePath">Path</param>
+    /// <param name="source">Source Colour</param>
+    /// <param name="target">Target Colour</param>
+    /// <returns>Resource Stream</returns>
+    internal static Stream? GetResourceStream<TResource>(this string resourcePath,
+        Color? source = null, Color? target = null) => 
+        GetResourceStream<TResource>(resourcePath)?
+        .ProcessResourceStream(source, target);
+
+    /// <summary>
+    /// Get Resource Stream
+    /// </summary>
+    /// <param name="resourcePath">Path</param>
     /// <param name="sources">Source Colours</param>
     /// <param name="targets">Target Colours</param>
     /// <returns>Resource Stream</returns>
-    internal static Stream? GetResourceStream<TResource>(this string resourcePath, 
-        Color[]? sources = null, Color[]? targets = null)
-    {
-        var stream = GetResourceStream<TResource>(resourcePath);
-        if (sources == null && targets == null)
-            return stream;
-        if (stream?.Length > 0)
-        {
-            using StreamReader reader = new(stream);
-            var content = reader.ReadToEnd()
-            .ProcessAssetResource(sources, targets);
-            return content.ToStream();
-        }
-        return null;
-    }
+    internal static Stream? GetResourceStream<TResource>(this string resourcePath,
+        Color[]? sources = null, Color[]? targets = null) =>
+        GetResourceStream<TResource>(resourcePath)?
+        .ProcessResourceStream(sources, targets);
 
     /// <summary>
     /// Get Resource String
