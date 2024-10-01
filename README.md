@@ -4,6 +4,10 @@
 
 ## Change Log
 
+### Version 1.2.1
+
+- Update AssetResource ToBase64EncodedSvgString Method
+
 ### Version 1.2.0
 
 - Update AssetResource with ToSvgString and ToBase64EncodedSvgString Methods, AssetBase with GetBase64EncodedString, FromStream, FromString and AsString Methods

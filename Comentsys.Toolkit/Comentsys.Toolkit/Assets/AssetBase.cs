@@ -12,7 +12,7 @@ public abstract class AssetBase<TResource>
     /// </summary>
     /// <param name="value">Value</param>
     /// <returns>Base-64 Encoded String</returns>
-    public static string? GetBase64EncodedString(string? value) =>
+    protected internal static string? GetBase64EncodedString(string? value) =>
         value.GetBase64EncodedString();
 
     /// <summary>
