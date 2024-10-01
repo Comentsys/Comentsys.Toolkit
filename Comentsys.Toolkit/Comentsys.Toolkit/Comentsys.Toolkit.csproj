@@ -8,12 +8,13 @@
 		<Title>Comentsys Toolkit</Title>
 		<Authors>Comentsys</Authors>
 		<Company>Comentsys</Company>
-		<Version>1.2.0</Version>
+		<Version>1.2.1</Version>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<PackageReleaseNotes>
 			1.0.0 - Initial Release
 			1.1.0 - Add ActionCommand and Update AssetBase with AsString Methods
 			1.2.0 - Update AssetResource with ToSvgString and ToBase64EncodedSvgString Methods, AssetBase with GetBase64EncodedString, FromStream, FromString and AsString Methods
+			1.2.1 - Update AssetResource ToBase64EncodedSvgString Method
 		</PackageReleaseNotes>
 		<PackageProjectUrl>https://github.com/Comentsys/Comentsys.Toolkit</PackageProjectUrl>
 		<Description>Toolkit for Binding and Asset Support</Description>
