@@ -16,6 +16,10 @@ Install-Package Comentsys.Toolkit
 
 ## Change Log
 
+### Version 1.3.0
+
+- Add ImageResource with ToPngBytes and ToBase64EncodedPngString, ImageBase with GetBase64EncodedString, AsStream, AsBytes and FromBytes Methods
+
 ### Version 1.2.1
 
 - Update AssetResource ToBase64EncodedSvgString Method

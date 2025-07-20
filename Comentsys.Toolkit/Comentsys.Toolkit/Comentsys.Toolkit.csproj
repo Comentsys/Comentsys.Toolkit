@@ -3,18 +3,19 @@
 	<PropertyGroup>
 		<TargetFramework>netstandard2.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
-		<LangVersion>12.0</LangVersion>
+		<LangVersion>13.0</LangVersion>
 		<Nullable>enable</Nullable>
 		<Title>Comentsys Toolkit</Title>
 		<Authors>Comentsys</Authors>
 		<Company>Comentsys</Company>
-		<Version>1.2.1</Version>
+		<Version>1.3.0</Version>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<PackageReleaseNotes>
 			1.0.0 - Initial Release
 			1.1.0 - Add ActionCommand and Update AssetBase with AsString Methods
 			1.2.0 - Update AssetResource with ToSvgString and ToBase64EncodedSvgString Methods, AssetBase with GetBase64EncodedString, FromStream, FromString and AsString Methods
 			1.2.1 - Update AssetResource ToBase64EncodedSvgString Method
+			1.3.0 - Add ImageResource with ToPngBytes and ToBase64EncodedPngString, ImageBase with GetBase64EncodedString, AsStream, AsBytes and FromBytes Methods
 		</PackageReleaseNotes>
 		<PackageProjectUrl>https://github.com/Comentsys/Comentsys.Toolkit</PackageProjectUrl>
 		<Description>Toolkit for Binding and Asset Support</Description>

@@ -4,6 +4,10 @@
 
 ## Change Log
 
+### Version 1.3.0
+
+- Add ImageResource with ToPngBytes and ToBase64EncodedPngString, ImageBase with GetBase64EncodedString, AsStream, AsBytes and FromBytes Methods
+
 ### Version 1.2.1
 
 - Update AssetResource ToBase64EncodedSvgString Method
@@ -273,6 +277,126 @@ Asset Resource SVG String
 #### Returns
 
 SVG String
+
+## ImageBase
+
+`AssetBase` can be used as the basis of an **Asset** Library using **PNG** format that can be used in any **.NET Standard** Compatible **Application**.
+
+### AsStream(root, path, extension)
+
+As Stream
+
+| Name | Description |
+| ---- | ----------- |
+| root | *System.String*<br>Root |
+| path | *System.String*<br>Path |
+| extension | *System.String*<br>Extension |
+
+#### Returns
+
+Resource Stream
+
+### AsStream(client, url)
+
+As Stream
+
+| Name | Description |
+| ---- | ----------- |
+| client | *System.Net.Http.HttpClient*<br>Http Client |
+| url | *System.Uri*<br>Request Url |
+
+#### Returns
+
+Resource Stream
+
+### AsBytes(root, path, extension)
+
+As Bytes
+
+| Name | Description |
+| ---- | ----------- |
+| root | *System.String*<br>Root |
+| path | *System.String*<br>Path |
+| extension | *System.String*<br>Extension |
+
+#### Returns
+
+Resource Bytes
+
+### AsBytes(client, url)
+
+As String
+
+| Name | Description |
+| ---- | ----------- |
+| client | *System.Net.Http.HttpClient*<br>Http Client |
+| url | *System.Uri*<br>Request Url |
+
+#### Returns
+
+Resource Bytes
+
+### FromBytes(bytes)
+
+From Bytes
+
+| Name | Description |
+| ---- | ----------- |
+| bytes | *System.Byte[]*<br>Bytes |
+
+#### Returns
+
+Resource Stream
+
+## ImageResource
+
+`ImageResource` is used by an **Asset** Library as an **Abstraction** to represent the contents of an **Asset** in **PNG** format and exposes a **Height** and **Width** for correct representation by clients if needed. 
+
+### Constructor
+
+Constructor
+
+### Constructor(stream, height, width)
+
+Constructor
+
+| Name | Description |
+| ---- | ----------- |
+| `stream` | `System.IO.Stream`<br>Stream |
+| `height` | `System.Int32`<br>Height |
+| `width` | `System.Int32`<br>Width |
+
+### Empty
+
+Empty Image Resource
+
+### Height
+
+Image Resource Height
+
+### Stream
+
+Image Resource Stream
+
+### Width
+
+Image Resource Width
+
+### ToBase64EncodedPngString
+
+Image Resource Base-64 Encoded PNG String
+
+#### Returns
+
+Base-64 Encoded PNG String
+
+### ToPngBytes
+
+Image Resource PNG Bytes
+
+#### Returns
+
+PNG Bytes
 
 ## ActionCommand
 
